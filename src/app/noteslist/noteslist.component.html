@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Notities</h2>
+    <p class="notities">Een overzicht van de notities van de selecteerde gebruiker</p>
+    <div class="row">
+        <div class="col">
+            <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Zoek op inhoud" aria-label="gebruikersnaam" aria-describedby="naam-gebruiker">
+        </div>
+        <div class="col">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Filter op categorie</option>
+                <option *ngFor="let categorie of categories">{{categorie.category}}</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <app-notecard class="col-sm-6" *ngFor="let note of notes | notefilter: searchText" [note]="note" (deleted)="onDeleteClick($event)" (updated)="updateNote($event)"></app-notecard>
+        <app-notecardinput class="col-sm-6" (noteToAdd)=addNoteToUser($event)></app-notecardinput>
+    </div>
+</div>

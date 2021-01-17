@@ -1,0 +1,25 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal'+ note.id">
+    Wijzig Notitie
+  </button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal{{note.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <input type="text" [(ngModel)]="note.category" class="form-control" placeholder="Categorie" aria-label="Username" aria-describedby="basic-addon1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea [(ngModel)]="note.content" placeholder="Wijzig hier je notitie..." class="form-control" id="notecontent" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluit</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateNote()">Update Notitie</button>
+            </div>
+        </div>
+    </div>
+</div>
